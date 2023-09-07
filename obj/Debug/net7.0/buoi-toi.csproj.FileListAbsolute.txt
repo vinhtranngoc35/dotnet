@@ -1,0 +1,14 @@
+D:\buoi-toi\bin\Debug\net7.0\buoi-toi.exe
+D:\buoi-toi\bin\Debug\net7.0\buoi-toi.deps.json
+D:\buoi-toi\bin\Debug\net7.0\buoi-toi.runtimeconfig.json
+D:\buoi-toi\bin\Debug\net7.0\buoi-toi.dll
+D:\buoi-toi\bin\Debug\net7.0\buoi-toi.pdb
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.GeneratedMSBuildEditorConfig.editorconfig
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.AssemblyInfoInputs.cache
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.AssemblyInfo.cs
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.csproj.CoreCompileInputs.cache
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.dll
+D:\buoi-toi\obj\Debug\net7.0\refint\buoi-toi.dll
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.pdb
+D:\buoi-toi\obj\Debug\net7.0\buoi-toi.genruntimeconfig.cache
+D:\buoi-toi\obj\Debug\net7.0\ref\buoi-toi.dll
