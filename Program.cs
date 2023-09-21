@@ -1,113 +1,98 @@
-﻿// int[] generateArray()
-// {
-//     Console.WriteLine("Please enter a number:");
-//     int num = int.Parse(Console.ReadLine());
-//     int[] result = new int[num];
-//     Random rd = new Random();
-//     for (int i = 0; i < num; i++)
-//     {
-
-//         result[i] = rd.Next(10);
-//         Console.WriteLine("arr[" + i + "] = " + result[i]);
-//     }
-//     return result;
-// }
-
-// int countNumber(int[] arr, int num)
-// {
-//     int count = 0;
-//     foreach (var item in arr)
-//     {
-//         if (item == num) count++;
-//     }
-//     return count;
-// }
-
-// int[] arr = generateArray();
-
-// Console.WriteLine(countNumber(arr, 7));
+﻿using System.Collections;
+using buoi_toi.model;
+using buoi_toi.service;
 
 
-// int[] mergeTwoArray(int[] arr1, int[] arr2)
-// {
-//     int[] result = new int[arr1.Length + arr2.Length];
-//     for (int i = 0; i < arr1.Length; i++)
-//     {
-//         result[i] = arr1[i];
-//     }
-//     for (int i = 0; i < arr2.Length; i++)
-//     {
-//         result[arr1.Length + i] = arr2[i];
-//     }
-//     return result;
-// }
-// //[1,2,3,4] [3,4,5,6];
-// //[1,2,3,4,3,4,5,6]
-// int[] array1 = { 1, 3, 2, 6 };
-// int[] array2 = { 2, 4, 5, 7 };
+bool flag = true;
 
-// int[] demo = mergeTwoArray(array1, array2);
+ProductService.AddProduct(new Product(1, "Cafe", "Ngon", 10000));
+ProductService.AddProduct(new Product(2, "Bo Huc", "Ngon", 15000));
 
-// foreach (var item in demo)
-// {
-//     Console.Write(item + " ");
-// }
-void printArray(int[] arr)
+while (flag)
 {
-    foreach (int item in arr)
+    Console.WriteLine("1. Them moi");
+    Console.WriteLine("2. Xoa");
+    Console.WriteLine("3. Sua");
+    Console.WriteLine("4. Xem tat ca");
+    Console.WriteLine("5. Thoat");
+    Console.Write("Chon: ");
+
+    string choice = Console.ReadLine();
+
+    switch (choice)
     {
-        Console.Write(item + " ");
+        case "1":
+            Create();
+            break;
+        case "2":
+            DeleteProduct();
+            break;
+        case "3":
+            EditProduct();
+            break;
+        case "4":
+            PrintAllProducts();
+            break;
+        case "5":
+            Console.WriteLine("Thoat");
+            flag = false;
+            break;
+        default:
+            Console.WriteLine("Chon sai");
+            break;
     }
 }
-int mySqrt(int num)
-{
-    int a = 10;
-    int b = 20;
-    for (int i = 1; i < num; i++)
-    {
-        if (i * i == num)
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-//[1,2,3,4], 2
-//[1,3,4,0] 2 => 1
-// int result1 = mySqrt(12);
-// int result2 = mySqrt(9);
-// int result3 = mySqrt(16);
-// Console.WriteLine(result1);
-// Console.WriteLine(result2);
-// Console.WriteLine(result3);
 
-int findIndex(int[] array, int num)
+static void Create()
 {
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] == num)
-        {
-            return i;
-        }
-    }
-    return -1;
+    Console.Write("Nhap ten: ");
+    string name = Console.ReadLine();
+    Console.Write("Nhap gia: ");
+    int price = int.Parse(Console.ReadLine());
+    Console.Write("Nhap mo ta: ");
+    string description = Console.ReadLine();
+    Product product = new();
+    product.Name = name;
+    product.Price = price;
+    product.Description = description;
+    ProductService.AddProduct(product);
 }
 
-int removeNumber(int[] array, int num)
+static void PrintAllProducts()
 {
-    int result = findIndex(array, num);
-    if (result == -1)
+    Console.WriteLine("Id|Name| Description | Price |");
+    foreach (Product product in ProductService.Products)
     {
-        return -1;
+        Console.WriteLine($"{product.Id} |{product.Name}  | {product.Description} | {product.Price} |");
     }
-    for (int i = result; i < array.Length - 1; i++)
-    {
-        array[i] = array[i + 1];
-    }
-    array[array.Length - 1] = 0;
-    printArray(array);
-    return result;
 }
-int[] arr = { 1, 2, 4, 5 };
-Console.WriteLine("Index = " + removeNumber(arr, 2));
+
+static void DeleteProduct()
+{
+    Console.Write("Nhap id: ");
+    string id = Console.ReadLine();
+    ProductService.RemoveProduct(int.Parse(id));
+}
+
+static void EditProduct()
+{
+    Console.Write("Nhap id: ");
+    string id = Console.ReadLine();
+    Console.Write("Nhap ten: ");
+    string name = Console.ReadLine();
+    Console.Write("Nhap gia: ");
+    int price = int.Parse(Console.ReadLine());
+    Console.Write("Nhap mo ta: ");
+    string description = Console.ReadLine();
+
+    Product product = new()
+    {
+        Id = int.Parse(id),
+        Name = name,
+        Price = price,
+        Description = description
+    };
+    ProductService.EditProduct(product);
+}
+
 
