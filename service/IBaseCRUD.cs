@@ -1,14 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace buoi_toi.service
 {
     public interface IBaseCRUD<T>
     {
-        public ArrayList FindAll();
+        public List<T> FindAll();
 
         public void Create(T t);
 

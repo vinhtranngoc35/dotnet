@@ -9,8 +9,8 @@ namespace buoi_toi.service
 {
     public class ProductService
     {
-        public static ArrayList Products = new();
 
+        public static List<Product> Products = new();
 
         public static int IdCurrent = 0;
 

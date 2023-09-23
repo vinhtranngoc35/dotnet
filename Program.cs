@@ -5,8 +5,9 @@ using buoi_toi.service;
 
 bool flag = true;
 
-ProductService.AddProduct(new Product(1, "Cafe", "Ngon", 10000));
-ProductService.AddProduct(new Product(2, "Bo Huc", "Ngon", 15000));
+
+CategoryService.AddCategory(new Category(1, "Cafe"));
+CategoryService.AddCategory(new Category(2, "Nuoc Ngot"));
 
 while (flag)
 {
@@ -51,19 +52,21 @@ static void Create()
     int price = int.Parse(Console.ReadLine());
     Console.Write("Nhap mo ta: ");
     string description = Console.ReadLine();
+
     Product product = new();
     product.Name = name;
     product.Price = price;
     product.Description = description;
+    product.Category = GetCategory();
     ProductService.AddProduct(product);
 }
 
 static void PrintAllProducts()
 {
-    Console.WriteLine("Id|Name| Description | Price |");
+    Console.WriteLine("Id|Name| Description | Price | Category");
     foreach (Product product in ProductService.Products)
     {
-        Console.WriteLine($"{product.Id} |{product.Name}  | {product.Description} | {product.Price} |");
+        Console.WriteLine($"{product.Id} |{product.Name}  | {product.Description} | {product.Price} | {product.Category.Name} ");
     }
 }
 
@@ -90,9 +93,23 @@ static void EditProduct()
         Id = int.Parse(id),
         Name = name,
         Price = price,
-        Description = description
+        Description = description,
+        Category = GetCategory()
     };
     ProductService.EditProduct(product);
+}
+
+
+static Category GetCategory()
+{
+
+    foreach (Category c in CategoryService.GetCategories())
+    {
+        Console.WriteLine($"{c.Id}. {c.Name}");
+    }
+    Console.Write("Nhap id category: ");
+    string id = Console.ReadLine();
+    return CategoryService.GetCategory(int.Parse(id));
 }
 
 
